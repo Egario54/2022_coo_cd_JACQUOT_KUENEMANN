@@ -1,5 +1,6 @@
 package donnees;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -68,6 +69,16 @@ public class Magasin {
 		return(res);
 	}
 
-	// TODO  ajouter une methode de tri
+    public void trierArtiste() {
+
+
+	}
+
+	public void trierAlbum() {
+		ArrayList<CD> ltrie = new ArrayList<CD>();
+		for (int i = 0; i < listeCds.size(); i++) {
+			getCd(i);
+		}
+	}
 
 }

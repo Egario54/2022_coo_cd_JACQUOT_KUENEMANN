@@ -122,5 +122,4 @@ public class ChargeurCD {
 		InfoPiste resultat = new InfoPiste(nomPiste, duree);
 		return resultat;
 	}
-
 }
