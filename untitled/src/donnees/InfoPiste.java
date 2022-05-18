@@ -1,6 +1,8 @@
 package donnees;
 
 
+import java.util.Objects;
+
 /**
  * la classe InfoPiste modelise les donnees d'une piste de CD a savoir
  * <ul>
@@ -13,6 +15,19 @@ package donnees;
  * 
  */
 public class InfoPiste {
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		InfoPiste infoPiste = (InfoPiste) o;
+		return dureeMillisecondes == infoPiste.dureeMillisecondes && Objects.equals(nomPiste, infoPiste.nomPiste);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nomPiste, dureeMillisecondes);
+	}
 
 	/**
 	 * attributs de la piste du CD

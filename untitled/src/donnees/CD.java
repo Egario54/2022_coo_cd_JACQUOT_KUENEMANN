@@ -2,6 +2,7 @@ package donnees;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * la classe CD contient toute l'information associee a un CD.</p>
@@ -30,6 +31,19 @@ public class CD {
 	private String nomArtiste;
 	private String nomCD;
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		CD cd = (CD) o;
+		return Objects.equals(nomArtiste, cd.nomArtiste) && Objects.equals(nomCD, cd.nomCD) && Objects.equals(pistes, cd.pistes);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nomArtiste, nomCD, pistes);
+	}
+
 	/**
 	 * les pistes du CD
 	 */
@@ -52,7 +66,7 @@ public class CD {
 
 	/**
 	 * ajoute une piste en fin de CD
-	 * 
+	 *
 	 * @param infoPiste
 	 *            les informations concernant la piste (duree et titre)
 	 */
@@ -84,7 +98,7 @@ public class CD {
 	/**
 	 * retourne une chaine correspondant au numero de piste (sur deux char) pour
 	 * pouvoir afficher les pistes sans decalage
-	 * 
+	 *
 	 * @param i
 	 *            le numero
 	 * @return la chaine sous deux caracteres
@@ -97,5 +111,34 @@ public class CD {
 		return (resultat);
 	}
 
-	// TODO 
+	public String getNomArtiste() {
+		return nomArtiste;
+	}
+
+	public String getNomCD() {
+		return nomCD;
+	}
+
+	public static CD comparerCDAlbum(CD min, CD actuel) {
+		String titre = min.getNomCD();
+		CD cd = min;
+		if (titre.compareTo(actuel.getNomCD()) > 0) {
+			cd = actuel;
+		}
+		return cd;
+	}
+
+	public static CD comparerCDArtiste(CD min, CD actuel) {
+		String artiste = min.getNomArtiste();
+		CD cd = min;
+		if (artiste.compareTo(actuel.getNomArtiste()) > 0) {
+			cd = actuel;
+		}
+		return cd;
+	}
+
+	public String toStringTest() {
+		return this.nomArtiste + " - " + this.nomCD+"\n";
+	}
+
 }

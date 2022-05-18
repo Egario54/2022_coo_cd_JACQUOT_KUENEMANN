@@ -21,7 +21,7 @@ public class MainChargeurMagasin {
 	 */
 	public static void main(String args[]) throws IOException {
 		
-		String repertoire = "../magasinCD_donnees/musicbrainzSimple/";
+		String repertoire = "C:\\Users\\kuene\\Desktop\\Cours\\Conception objet\\2022_coo_cd_JACQUOT_KUENEMANN\\untitled\\src\\XML_FILES";
 		ChargeurMagasin charge = new ChargeurMagasin(repertoire);
 		Magasin resultat = charge.chargerMagasin();
 		System.out.println(resultat);
@@ -31,7 +31,7 @@ public class MainChargeurMagasin {
 		sc.close();
 
 		resultat.trierArtiste();
-		System.out.println(resultat);
+		//System.out.println(resultat);
 
 		resultat.trierAlbum();
 		System.out.println(resultat);
