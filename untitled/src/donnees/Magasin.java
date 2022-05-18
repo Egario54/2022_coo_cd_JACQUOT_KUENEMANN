@@ -1,6 +1,5 @@
 package donnees;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -46,7 +45,6 @@ public class Magasin {
 		}
 		chaineResultat += "nb Cds: " + listeCds.size();
 		return (chaineResultat);
-
 	}
 
 	/**
@@ -76,9 +74,47 @@ public class Magasin {
 
 	public void trierAlbum() {
 		ArrayList<CD> ltrie = new ArrayList<CD>();
-		for (int i = 0; i < listeCds.size(); i++) {
-			getCd(i);
+		int tailleListe = listeCds.size();
+		for (int i = 0; i < tailleListe; i++) {
+			CD min = getCd(0);
+			for (int j = 0; j < listeCds.size(); j++) {
+				if (listeCds.size() == 1) {
+					break;
+				}
+				min = CD.comparerCDAlbum(min,getCd(j));
+			}
+			ltrie.add(min);
+			listeCds.remove(min);
 		}
+		listeCds.clear();
+		listeCds = ltrie;
+	}
+
+	public void triArtist() {
+		ArrayList<CD> ltrie = new ArrayList<>();
+		int tailleListe = listeCds.size();
+		for (int i = 0; i < tailleListe; i++) {
+			CD min = getCd(0);
+			for (int j = 0; j < listeCds.size(); j++) {
+				if (listeCds.size() == 1) {
+					break;
+				}
+				min = CD.comparerCDArtiste(min, getCd(j));
+			}
+			ltrie.add(min);
+			listeCds.remove(min);
+		}
+		listeCds.clear();
+		listeCds = ltrie;
+	}
+
+	public String toStringTest() {
+		String chaineResultat = "";
+		//parcours des Cds
+		for (CD listeCd : listeCds) {
+			chaineResultat += listeCd.toStringTest();
+		}
+		return (chaineResultat);
 	}
 
 }
